@@ -1,8 +1,5 @@
-{
-  server:{
-    allowedHosts: [
-      'localhost:4200',
-      'angular-task.systemvi.net'
-    ]
-  }
-}
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  allowedHosts:['.systemvi.net']
+})
