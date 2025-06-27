@@ -1,4 +1,4 @@
-import {Component, effect, inject, Injectable, OnInit, signal} from '@angular/core';
+import {Component, inject, Injectable, OnInit, signal} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {EmployeePieChart} from '../employeePieChart/employeePieChart';
 import {EmployeeTable} from '../employeeTable/employeeTable';

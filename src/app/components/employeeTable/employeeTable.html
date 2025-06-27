@@ -1,3 +1,18 @@
-<div>
-  employee table
+<div id="scrollable">
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Total Time in Month</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      @for (entry of timeEntries??[];track entry.id){
+        <tr>
+          <td>{{entry.employeeName}}</td>
+          <td>{{entry.totalHoursInMonth}} hrs</td>
+          <td><a href="#">Edit</a></td>
+        </tr>
+      }
+    </tbody>
+  </table>
 </div>
