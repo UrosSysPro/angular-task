@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { App } from './app';
+import { App } from './components/app/app';
 
 describe('App', () => {
   beforeEach(async () => {
