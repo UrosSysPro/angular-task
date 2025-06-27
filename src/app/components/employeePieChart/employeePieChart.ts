@@ -1,9 +1,5 @@
-import {Component} from '@angular/core';
-
-type EmployeePieChartData = {
-  name: string,
-  value: number
-}
+import {Component, Input} from '@angular/core';
+import {TimeEntry} from '../../models/TimeEntry';
 
 @Component({
   selector: 'employee-pie-chart',
@@ -12,5 +8,5 @@ type EmployeePieChartData = {
 })
 
 export class EmployeePieChart {
-  enteries: EmployeePieChartData[]=[];
+  @Input() timeEntries!: TimeEntry[]|null;
 }

@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component,Input} from '@angular/core';
+import {TimeEntry} from '../../models/TimeEntry';
 
 export type EmployeeTableRowData={
   name: string,
@@ -11,22 +12,5 @@ export type EmployeeTableRowData={
   styleUrls: ['./employeeTable.css'],
 })
 export class EmployeeTable{
-  rows: EmployeeTableRowData[]=[
-    {
-      name:"default 1",
-      totalTimeInMonth: 200,
-    },
-    {
-      name:"default 2",
-      totalTimeInMonth: 150,
-    },
-    {
-      name:"default 3",
-      totalTimeInMonth: 70,
-    },
-    {
-      name:"default 4",
-      totalTimeInMonth: 50,
-    },
-  ];
+  @Input() timeEntries!:TimeEntry[]|null;
 }

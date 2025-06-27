@@ -1,9 +1,9 @@
-import {Component, effect, inject, Injectable, OnInit} from '@angular/core';
+import {Component, effect, inject, Injectable, OnInit, signal} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {EmployeePieChart} from '../employeePieChart/employeePieChart';
 import {EmployeeTable} from '../employeeTable/employeeTable';
 import {AzureWebsiteService} from '../../services/AzureWebsiteService';
-import {TimeEntries} from '../../models/TimeEntries';
+import {TimeEntry, timeEntryDtoToModel} from '../../models/TimeEntry';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -14,11 +14,15 @@ import {Observable} from 'rxjs';
 })
 
 export class App implements OnInit {
-  private code:string = ""
-  private azureWebsiteService=inject(AzureWebsiteService);
-  private meetingEnteries!:Observable<TimeEntries[]>;
+  private code:string = "vO17RnE8vuzXzPJo5eaLLjXjmRW07law99QTD90zat9FfOQJKKUcgQ=="
+  private azureWebsiteService:AzureWebsiteService=inject(AzureWebsiteService);
+  timeEntries=signal<TimeEntry[]|null>(null);
 
   ngOnInit() {
-    console.log("hello world")
+    // this.azureWebsiteService.getMeetingEntries(this.code).subscribe(dtoEntries => {
+    this.azureWebsiteService.getMeetingEntries(this.code).subscribe(dtoEntries => {
+      console.log("subscription called");
+      this.timeEntries.set(dtoEntries.map(timeEntryDtoToModel));
+    });
   }
 }
