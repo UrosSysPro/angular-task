@@ -1,10 +1,9 @@
-import {Component, inject, Injectable, OnInit, signal} from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {EmployeePieChart} from '../employeePieChart/employeePieChart';
 import {EmployeeTable} from '../employeeTable/employeeTable';
 import {AzureWebsiteService} from '../../services/AzureWebsiteService';
 import {TimeEntry, timeEntryDtoToModel} from '../../models/TimeEntry';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -20,8 +19,8 @@ export class App implements OnInit {
 
   ngOnInit() {
     // this.azureWebsiteService.getMeetingEntries(this.code).subscribe(dtoEntries => {
-    this.azureWebsiteService.getMeetingEntries(this.code).subscribe(dtoEntries => {
-      console.log("subscription called");
+    const observer = this.azureWebsiteService.getMeetingEntries(this.code)
+    observer.subscribe(dtoEntries => {
       this.timeEntries.set(dtoEntries.map(timeEntryDtoToModel));
     });
   }
