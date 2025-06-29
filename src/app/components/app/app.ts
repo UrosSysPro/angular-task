@@ -77,6 +77,4 @@ export class App implements OnInit {
   ngOnInit() {
     this.requestData();
   }
-
-  protected readonly LoadingState = LoadingState;
 }
