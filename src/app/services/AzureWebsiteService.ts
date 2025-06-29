@@ -9,7 +9,7 @@ export class AzureWebsiteService {
 
   getMeetingEntries(code: string){
     const url=`${this.apiUrl}/gettimeentries?code=${code}`
-    return this.http.jsonp<TimeEntryDto[]>(url,"parseResponse");
+    return this.http.get<TimeEntryDto[]>(url);
   }
   getMeetingEntriesError(code: string){
     const url=`${this.apiUrl}/gettimeentries.lol?code=${code}`
