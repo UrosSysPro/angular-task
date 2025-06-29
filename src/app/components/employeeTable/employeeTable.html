@@ -6,17 +6,17 @@
       <th class="align-center p-1 bg-gray">Actions</th>
     </thead>
     <tbody>
-      @for (entry of timeEntries()??[];track entry.id){
-        @if(entry.totalHoursInMonth<100){
+      @for (entry of timeEntries()??[];track entry.EmployeeName){
+        @if(entry.TotalHoursInMonth<100){
           <tr class="lowerThen">
-            <td class="align-left p-1">{{entry.employeeName}}</td>
-            <td class="align-center p-1">{{entry.totalHoursInMonth}} hrs</td>
+            <td class="align-left p-1">{{entry.EmployeeName}}</td>
+            <td class="align-center p-1">{{entry.TotalHoursInMonth | hours}} hrs</td>
             <td class="align-center p-1"><a href="#">Edit</a></td>
           </tr>
         } @else {
           <tr>
-            <td class="align-left p-1">{{entry.employeeName}}</td>
-            <td class="align-center p-1">{{entry.totalHoursInMonth}} hrs</td>
+            <td class="align-left p-1">{{entry.EmployeeName}}</td>
+            <td class="align-center p-1">{{entry.TotalHoursInMonth | hours}} hrs</td>
             <td class="align-center p-1"><a href="#">Edit</a></td>
           </tr>
         }

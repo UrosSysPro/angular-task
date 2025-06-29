@@ -1,14 +1,25 @@
 <div>
-  @if(isLoading()){
+<!--  @if(isLoading()){-->
+<!--    <span>Loading...</span>-->
+<!--  }-->
+<!--  @if(timeEntries()!=null&&!hasErrorOccurred()){-->
+<!--    <employee-table [timeEntries]=timeEntries() />-->
+<!--    <employee-pie-chart [timeEntries]=timeEntries() />-->
+<!--  }-->
+<!--  @if(hasErrorOccurred()){-->
+<!--    <span>Error has occurred while loading data</span>-->
+<!--    <button (onclick)="requestData()">Refresh</button>-->
+<!--  }-->
+  @if(appState().name=="loading"){
     <span>Loading...</span>
   }
-  @if(timeEntries()!=null&&!hasErrorOccurred()){
-    <employee-table [timeEntries]=timeEntries() />
-    <employee-pie-chart [timeEntries]=timeEntries() />
-  }
-  @if(hasErrorOccurred()){
+  @if(appState().name=="error"){
     <span>Error has occurred while loading data</span>
     <button (onclick)="requestData()">Refresh</button>
+  }
+  @if(appState().name=="normal"){
+    <employee-table [timeEntries]=timeEntriesPerUser() />
+    <employee-pie-chart [timeEntries]=timeEntriesPerUser() />
   }
 </div>
 <router-outlet />

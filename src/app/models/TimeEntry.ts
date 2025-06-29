@@ -16,14 +16,15 @@ export type TimeEntryDto ={
   DeletedOn:string|null,
 }
 
+export type TimeEntryPerUser={
+  EmployeeName:string,
+  TotalHoursInMonth:number,
+}
+
 export function timeEntryDtoToModel(dto: TimeEntryDto): TimeEntry {
-  const numberFormat=new Intl.NumberFormat("en-US",{
-    maximumFractionDigits:0,
-    minimumFractionDigits:0,
-  });
   const startDate=new Date(Date.parse(dto.StarTimeUtc));
   const endDate=new Date(Date.parse(dto.EndTimeUtc));
-  const totalTime=parseInt(numberFormat.format((endDate.getTime()-startDate.getTime())/1000/3600));
+  const totalTime=(endDate.getTime()-startDate.getTime())/1000/3600;
   return {
     id:dto.Id,
     employeeName:dto.EmployeeName,
@@ -32,5 +33,11 @@ export function timeEntryDtoToModel(dto: TimeEntryDto): TimeEntry {
     endTimeUtc:endDate,
     totalHoursInMonth:totalTime,
     deleted:dto.DeletedOn==null,
+  }
+}
+export function timeEntryToTimeEntryPerUser(entry:TimeEntry):TimeEntryPerUser{
+  return {
+    EmployeeName:entry.employeeName,
+    TotalHoursInMonth:entry.totalHoursInMonth,
   }
 }
