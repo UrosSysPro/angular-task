@@ -1,4 +1,4 @@
-import {Component,Input} from '@angular/core';
+import {Component, input} from '@angular/core';
 import {TimeEntry} from '../../models/TimeEntry';
 
 export type EmployeeTableRowData={
@@ -12,5 +12,5 @@ export type EmployeeTableRowData={
   styleUrls: ['./employeeTable.css'],
 })
 export class EmployeeTable{
-  @Input() timeEntries!:TimeEntry[]|null;
+  timeEntries=input<TimeEntry[]|null>(null);
 }

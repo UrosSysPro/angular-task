@@ -6,7 +6,7 @@
       <th>Actions</th>
     </thead>
     <tbody>
-      @for (entry of timeEntries??[];track entry.id){
+      @for (entry of timeEntries()??[];track entry.id){
         <tr>
           <td>{{entry.employeeName}}</td>
           <td>{{entry.totalHoursInMonth}} hrs</td>
