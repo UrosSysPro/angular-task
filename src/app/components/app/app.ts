@@ -21,7 +21,20 @@ export class App implements OnInit {
     // this.azureWebsiteService.getMeetingEntries(this.code).subscribe(dtoEntries => {
     const observer = this.azureWebsiteService.getMeetingEntries(this.code)
     observer.subscribe(dtoEntries => {
-      this.timeEntries.set(dtoEntries.map(timeEntryDtoToModel));
+      const  entries = dtoEntries.map(timeEntryDtoToModel);
+      const map:Map<string,TimeEntry>=new Map();
+      for(const entry of entries){
+        if(map.has(entry.employeeName)){
+          const previous=map.get(entry.employeeName)!;
+          map.set(entry.employeeName, {
+            ...previous,
+            totalHoursInMonth:previous.totalHoursInMonth+entry.totalHoursInMonth,
+          });
+        }else{
+          map.set(entry.employeeName, entry);
+        }
+      }
+      this.timeEntries.set(Array.from(map.values()));
     });
   }
 }

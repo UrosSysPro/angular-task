@@ -7,11 +7,19 @@
     </thead>
     <tbody>
       @for (entry of timeEntries()??[];track entry.id){
-        <tr>
-          <td class="align-left p-1 bg-red">{{entry.employeeName}}</td>
-          <td class="align-center p-1">{{entry.totalHoursInMonth}} hrs</td>
-          <td class="align-center p-1"><a href="#">Edit</a></td>
-        </tr>
+        @if(entry.totalHoursInMonth>100){
+          <tr class="selected">
+            <td class="align-left p-1">{{entry.employeeName}}</td>
+            <td class="align-center p-1">{{entry.totalHoursInMonth}} hrs</td>
+            <td class="align-center p-1"><a href="#">Edit</a></td>
+          </tr>
+        } @else {
+          <tr>
+            <td class="align-left p-1">{{entry.employeeName}}</td>
+            <td class="align-center p-1">{{entry.totalHoursInMonth}} hrs</td>
+            <td class="align-center p-1"><a href="#">Edit</a></td>
+          </tr>
+        }
       }
     </tbody>
   </table>

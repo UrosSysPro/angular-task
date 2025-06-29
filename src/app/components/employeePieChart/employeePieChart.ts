@@ -25,7 +25,7 @@ export class EmployeePieChart
   canvasRef=viewChild<ElementRef<HTMLCanvasElement>>("canvas")
   chart=computed<Chart|null>(()=>{
     if(this.timeEntries()&&this.canvasRef()?.nativeElement){
-      const entries = this.timeEntries()!.slice(0,20);
+      const entries = this.timeEntries()!;
       const canvas=this.canvasRef()!.nativeElement;
       console.log("entries",entries);
       console.log("canvas",canvas);

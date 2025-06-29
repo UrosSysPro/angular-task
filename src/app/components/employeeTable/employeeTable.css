@@ -52,6 +52,6 @@
 .bg-gray{
   background-color: #e5e5e5;
 }
-.bg-red{
+.selected td{
   background-color: #f4ad9c;
 }
