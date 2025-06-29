@@ -1,5 +1,14 @@
 <div>
-  <employee-table [timeEntries]=timeEntries() />
-  <employee-pie-chart [timeEntries]=timeEntries() />
+  @if(isLoading()){
+    <span>Loading...</span>
+  }
+  @if(timeEntries()!=null&&!hasErrorOccurred()){
+    <employee-table [timeEntries]=timeEntries() />
+    <employee-pie-chart [timeEntries]=timeEntries() />
+  }
+  @if(hasErrorOccurred()){
+    <span>Error has occurred while loading data</span>
+    <button (onclick)="requestData()">Refresh</button>
+  }
 </div>
 <router-outlet />

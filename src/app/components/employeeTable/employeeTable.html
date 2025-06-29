@@ -7,8 +7,8 @@
     </thead>
     <tbody>
       @for (entry of timeEntries()??[];track entry.id){
-        @if(entry.totalHoursInMonth>100){
-          <tr class="selected">
+        @if(entry.totalHoursInMonth<100){
+          <tr class="lowerThen">
             <td class="align-left p-1">{{entry.employeeName}}</td>
             <td class="align-center p-1">{{entry.totalHoursInMonth}} hrs</td>
             <td class="align-center p-1"><a href="#">Edit</a></td>
