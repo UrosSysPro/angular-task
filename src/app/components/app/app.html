@@ -15,7 +15,7 @@
   }
   @if(appState().name=="error"){
     <span>Error has occurred while loading data</span>
-    <button (onclick)="requestData()">Refresh</button>
+    <button (click)="requestData()">Refresh</button>
   }
   @if(appState().name=="normal"){
     <employee-table [timeEntries]=timeEntriesPerUser() />
