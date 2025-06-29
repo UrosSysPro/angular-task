@@ -1,18 +1,19 @@
 <div id="scrollable">
-  <table>
+  <table id="table-gray-border-collapse" class="w-full">
     <thead>
-      <th>Name</th>
-      <th>Total Time in Month</th>
-      <th>Actions</th>
+      <th class="align-left p-1 bg-gray">Name</th>
+      <th class="align-center p-1 bg-gray">Total Time in Month</th>
+      <th class="align-center p-1 bg-gray">Actions</th>
     </thead>
     <tbody>
       @for (entry of timeEntries()??[];track entry.id){
         <tr>
-          <td>{{entry.employeeName}}</td>
-          <td>{{entry.totalHoursInMonth}} hrs</td>
-          <td><a href="#">Edit</a></td>
+          <td class="align-left p-1 bg-red">{{entry.employeeName}}</td>
+          <td class="align-center p-1">{{entry.totalHoursInMonth}} hrs</td>
+          <td class="align-center p-1"><a href="#">Edit</a></td>
         </tr>
       }
     </tbody>
   </table>
 </div>
+<div style="height: 50px"></div>
