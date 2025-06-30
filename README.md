@@ -17,3 +17,6 @@ npm start
 ## Live Version
 -- Note: Live version currently doesn't work due to cors issue, probably due to domain, works when accessed through localhost.
 [http://angular-task.systemvi.net](http://angular-task.systemvi.net)
+
+## Screenshot
+![screenshot](screenshot.png)
